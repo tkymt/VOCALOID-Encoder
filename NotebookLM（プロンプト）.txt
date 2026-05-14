@@ -1,1 +1,9 @@
 ニコニコ動画とYouTubeの双方の動画投稿の、推奨要件を厳密かつ完全に満たす、最小限のFFmpegのコマンドラインオプションを、一行で書け。入力ソースのファイル名は、input.pfmとinput.wav。ただし、PCM音源をエンコードせず、そのままコンテナへ格納せよ。加えて、フレームレートを60fpsにせよ。
+
+つぎの、コマンドラインオプションを、検証せよ。
+ffmpeg -loop 1 -framerate 60 -i %1 -i %2 ^
+-c:v libx264 -profile:v high -pix_fmt yuv420p ^
+-vf "setparams=color_primaries=bt709:color_trc=iec61966-2-1:colorspace=bt709,colorspace=all=bt709:itrc=iec61966-2-1" ^
+-color_primaries bt709 -color_trc bt709 -colorspace bt709 ^
+-g 30 -bf 2 -flags +cgop -b:v 60M -movflags +faststart ^
+-c:a copy -shortest output.mov
