@@ -18,7 +18,8 @@ ffmpeg ^
 -pix_fmt yuv420p ^
 -vf "setparams=color_primaries=bt709:color_trc=iec61966-2-1:colorspace=bt709,colorspace=all=bt709:itrc=iec61966-2-1" ^
 -color_primaries bt709 ^
--color_trc bt709 -colorspace bt709 ^
+-color_trc bt709 ^
+-colorspace bt709 ^
 -g 30 ^
 -bf 2 ^
 -flags +cgop ^
